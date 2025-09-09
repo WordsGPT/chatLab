@@ -1,0 +1,39 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "bundler",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "baseUrl": "./src",
+    "paths": {
+      "@auth/*": ["app/auth/*"],
+      "@core/*": ["app/core/*"],
+      "@experiments/*": ["app/experiments/*"],
+      "@experiments-history/*": ["app/experiments-history/*"],
+      "@executions/*": ["app/executions/*"],
+      "@executions-history/*": ["app/executions-history/*"],
+      "@notFound/*": ["app/not-found/*"],
+      "@settings/*": ["app/settings/*"],
+      "@shared/*": ["app/shared/*"],
+      "@env/*": ["environments/*"]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictStandalone": true,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}
