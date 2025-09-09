@@ -1,0 +1,63 @@
+version: "3.9"
+
+services:
+  frontend:
+    build: ./frontend
+    container_name: frontend_chatords
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend
+    container_name: backend_chatords
+    env_file:
+      - .env
+    ports:
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
+    depends_on:
+      - db
+      - litellm
+    networks:
+      - app-network
+    environment:
+      - NODE_ENV=production
+
+  db:
+    image: postgres:15-alpine
+    container_name: postgres_db
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    ports:
+      - "${DATABASE_PORT}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  litellm:
+    image: ghcr.io/berriai/litellm:main-latest
+    container_name: litellm
+    env_file:
+      - .env
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./proxy-llm/config.yaml:/app/config.yaml
+    command: --config /app/config.yaml
+    networks:
+      - app-network
+
+volumes:
+  pgdata:
+
+networks:
+  app-network:
+    driver: bridge
