@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2023",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@auth/*": ["src/auth/*"],
+      "@common/*": ["src/common/*"],
+      "@database/*": ["src/database/*"],
+      "@experiment/*": ["src/experiment/*"],
+      "@experiment-execution/*": ["src/experiment-execution/*"],
+      "@experiment-variable/*": ["src/experiment-variable/*"],
+      "@llm-model/*": ["src/llm-model/*"],
+      "@llm-provider/*": ["src/llm-provider/*"],
+      "@users/*": ["src/users/*"],
+      "@prompt/*": ["src/prompt/*"],
+    }
+  }
+}
