@@ -1,0 +1,9 @@
+model_list:
+  - model_name: gpt-4.1-nano
+    litellm_params:
+      model: gpt-4.1-nano
+      api_key:
+
+general_settings:
+  database_url: "postgres://user:password@db:5432/litellm"
+  master_key: "sk-1234"
