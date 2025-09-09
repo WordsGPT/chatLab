@@ -1,0 +1,139 @@
+<section class="executions-form">
+
+  <!-- Execution Form -->
+  <form [formGroup]="executionForm" (ngSubmit)="onSubmit()">
+
+    <!-- Variables -->
+    @for (variable of currentExperiment().variables; track variable.name) {
+      <div class="variable-container">
+
+        @if (variable.validations.type === ValidationVariableType.ARRAY) {
+
+          <!-- Array Fieldset -->
+          <fieldset [formArrayName]="variable.name">
+            <legend>{{variable.name}}</legend>
+
+            @for(control of getArrayControl(variable.name).controls; let j = $index; track j) {
+
+              <!-- Delete Button -->
+              @if((j === getArrayControl(variable.name).length - 1) && (getArrayControl(variable.name).length > 1)) {
+                <button type="button" (click)="removeFromArray(variable.name, j)">
+                  - - Delete - -
+                </button>
+              }
+
+              <!-- Array Item -->
+              <div class="array-item">
+                <label [for]="variable.name + '-' + j"> Item {{ j + 1 }}</label>
+                
+                @if (variable.type === VariableType.STRING_ARRAY) {
+                  <input 
+                    type="text"
+                    class="form-control"
+                    [id]="variable.name + '-' + j"
+                    [formControlName]="j"
+                    [ngClass]="{ 'is-invalid': submitted() && getErrorMessage(variable.name + '.' + j) }"
+                    placeholder="Introduce a text"
+                  />
+                } @else if (variable.type === VariableType.NUMBER_ARRAY) {
+                  <input 
+                    type="number" 
+                    class="form-control"
+                    [id]="variable.name + '-' + j"
+                    [formControlName]="j"
+                    [ngClass]="{ 'is-invalid': submitted() && getErrorMessage(variable.name + '.' + j) }"
+                    placeholder="Introduce a number"
+                  />
+                } @else if (variable.type === VariableType.BOOLEAN_ARRAY) {
+                  <input 
+                    type="checkbox" 
+                    class="form-check-input"
+                    [id]="variable.name + '-' + j"
+                    [formControlName]="j"
+                    [ngClass]="{ 'is-invalid': submitted() && getErrorMessage(variable.name + '.' + j) }"
+                  />
+                } @else if (variable.type === VariableType.OBJECT_ARRAY) {
+                  <textarea 
+                    class="form-control"
+                    [id]="variable.name + '-' + j"
+                    [formControlName]="j"
+                    [ngClass]="{ 'is-invalid': submitted() && getErrorMessage(variable.name + '.' + j) }"
+                    placeholder="Introduce an object"
+                  ></textarea>
+                }
+
+                <!-- Error Message for Array Item -->
+                @if (submitted() && getErrorMessage(variable.name + '.' + j)) {
+                  <small class="text-danger error-message">{{ getErrorMessage(variable.name + '.' + j) }}</small>
+                }
+              </div>
+
+              <!-- Add Item Button -->
+              @if(j === getArrayControl(variable.name).length - 1) {
+                <button type="button" (click)="addToArray(variable.name)">
+                  - - Add Item - -
+                </button>
+              }
+            }
+          </fieldset>
+        } @else {
+
+          <!-- Single Fieldset -->
+          <label>{{ variable.name }}</label>
+
+          @if (variable.type === VariableType.STRING) {
+            <input 
+              type="text"
+              class="form-control"
+              [id]="variable.name"
+              [formControlName]="variable.name"
+              [ngClass]="{ 'is-invalid': submitted() && getErrorMessage(variable.name) }"
+              placeholder="Introduce a text"
+            />
+          } @else if (variable.type === VariableType.NUMBER) {
+            <input 
+              type="number" 
+              class="form-control"
+              [id]="variable.name"
+              [formControlName]="variable.name"
+              [ngClass]="{ 'is-invalid': submitted() && getErrorMessage(variable.name) }"
+              placeholder="Introduce a number"
+            />
+          } @else if (variable.type === VariableType.BOOLEAN) {
+            <input 
+              type="checkbox" 
+              class="form-check-input"
+              [id]="variable.name"
+              [formControlName]="variable.name"
+              [ngClass]="{ 'is-invalid': submitted() && getErrorMessage(variable.name) }"
+            />
+          } @else if (variable.type === VariableType.OBJECT) {
+            <textarea 
+              class="form-control"
+              [id]="variable.name"
+              [formControlName]="variable.name"
+              [ngClass]="{ 'is-invalid': submitted() && getErrorMessage(variable.name) }"
+              placeholder="Introduce an object"
+            ></textarea>
+          }
+        }
+
+        <!-- Error Message for Single Field and Array -->
+        @if (submitted() && getErrorMessage(variable.name)) {
+          <small class="text-danger error-message">{{ getErrorMessage(variable.name) }}</small>
+        }
+
+      </div>
+    }
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="loading()">
+      <i class="bi bi-play-circle"></i>
+      Create Execution
+    </button>
+
+    @if(submitted() && executionError) {
+      <small class="text-danger">{{ executionError }}</small>
+    }
+  </form>
+</section>

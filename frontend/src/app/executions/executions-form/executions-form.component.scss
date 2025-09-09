@@ -1,0 +1,194 @@
+// Executions form styles
+.executions-form {
+
+  // Form Styles
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    // Variable Container Styles
+    .variable-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+
+      // Label Styles
+      label {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--darkGrey-lightGrey);
+      }
+
+      // Input Styles
+      input.form-control,
+      textarea.form-control {
+        padding: 0.75rem;
+        border: 1.5px solid var(--medium-light-grey);
+        border-radius: 8px;
+        background-color: var(--white-baseBlue);
+        color: var(--darkGrey-lightGrey);
+        font-size: 1rem;
+
+        &::placeholder {
+          color: var(--darkGrey-lightGrey);
+        }
+
+        &:focus {
+          border-color: var(--main-blue);
+          outline: none;
+          box-shadow: 0 0 0 3px rgba(var(--main-blue), 0.1);
+        }
+
+        &.is-invalid {
+          border-color: var(--orange);
+          box-shadow: 0 0 0 3px rgba(var(--orange), 0.1);
+        }
+      }
+
+      // Textarea Styles
+      textarea.form-control {
+        min-height: 100px;
+        resize: vertical;
+      }
+
+      // Checkbox Styles
+      input[type="checkbox"] {
+        margin: 0.25rem 0.5rem 0 0;
+        cursor: pointer;
+
+        &.is-invalid {
+          outline: 2px solid var(--orange);
+        }
+      }
+
+      // Error Message Styles
+      small.text-danger,
+      small.error-message {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--orange);
+      }
+    }
+
+    // Array Styles
+    fieldset {
+      border: 2px solid var(--medium-light-grey);
+      border-radius: 10px;
+      padding: 1rem;
+
+      // Title Array Styles
+      legend {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: var(--darkGrey-lightGrey);
+      }
+
+      // Array Item Styles
+      .array-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+
+        label {
+          font-size: 0.95rem;
+          font-weight: 500;
+          color: var(--darkGrey-lightGrey);
+        }
+      }
+
+      button {
+        display: block;
+        margin: 0 auto;
+        padding: 0;
+        border: none;
+        background: none;
+        text-align: center;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--mainBlue-turquoise);
+
+        &:hover,
+        &:focus {
+            color: var(--mediumBlue-mediumTurquoise);
+        }
+
+        &:active {
+            color: var(--darkerBlue-darkerTurquoise);
+        }
+      }
+    }
+
+    // Submit Button Styles
+    button[type="submit"] {
+      align-self: center;
+      padding: 0.75rem 2rem;
+      gap: 0.5rem;
+      border: none;
+      border-radius: 8px;
+      background-color: var(--mainBlue-turquoise);
+      color: var(--white-baseBlue);
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+
+      i {
+        margin-right: 0.5rem;
+      }
+
+      &:hover {
+        background-color: var(--mediumBlue-mediumTurquoise);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      &:active {
+        background-color: var(--darkerBlue-darkerTurquoise);
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    // Form Error Message Styles
+      small.text-danger,
+      small.error-message {
+        margin: 0;
+        font-size: 1rem;
+        color: var(--orange);
+      }
+  }
+}
+
+// Media queries
+@media screen and (max-width: 768px) {
+  .executions-form {
+    form {
+      gap: 1.5rem;
+
+      fieldset {
+        padding: 0.75rem;
+
+        legend {
+          font-size: 1rem;
+        }
+
+        .array-item {
+          margin-bottom: 0.75rem;
+
+          label {
+            font-size: 0.9rem;
+          }
+        }
+
+        button {
+          width: 100%;
+        }
+      }
+
+      button[type="submit"] {
+        width: 100%;
+      }
+    }
+  }
+}

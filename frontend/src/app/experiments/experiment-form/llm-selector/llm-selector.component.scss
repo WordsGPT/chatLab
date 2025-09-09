@@ -1,0 +1,125 @@
+// LLM Selector component styles
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+
+  // Form group label
+  label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--darkGrey-lightGrey);
+  }
+
+  // Error messages
+  small.text-danger, 
+  small.error-message {
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+    color: var(--orange);
+  }
+
+  // Multi-select dropdown styles
+  ngx-bootstrap-multiselect {
+
+    // Dropdown styles
+    .dropdown.form-control {
+      padding: 0rem;
+    }
+
+    // Dropdown toggle styles
+    .dropdown-toggle.form-control {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1.5px solid var(--medium-light-grey);
+      border-radius: 8px;
+      background-color: var(--white-baseBlue);
+      color: var(--darkGrey-lightGrey);
+    }
+
+    // Dropdown menu styles
+    .dropdown-menu {
+      overflow-y: auto;
+      border: 1.5px solid var(--medium-light-grey);
+      border-radius: 8px;
+      background-color: var(--white-baseBlue);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+      input[type="text"] {
+        padding: 0.5rem;
+        border: 1px solid var(--medium-light-grey);
+        border-radius: 4px;
+        background-color: var(--white-baseBlue);
+        font-size: 1rem;
+        color: var(--darkGrey-lightGrey);
+        transition: all 0.2s ease-in-out;
+        
+        &::placeholder {
+          color: var(--darkGrey-lightGrey);
+        }
+      }
+
+      .input-group-text {
+        border: 1px solid var(--medium-light-grey);
+        border-right: none;
+        background-color: var(--white-baseBlue);
+      }
+
+      .input-group-text i.fa.fa-search::before {
+        display: inline-block;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        content: '\f52a';
+        font-family: "bootstrap-icons";
+        font-size: 1rem;
+        line-height: 1;
+        vertical-align: middle;
+        color: var(--darkGrey-lightGrey);
+      }
+
+      .input-group-append .btn.btn-secondary {
+        border: 1px solid var(--medium-light-grey);
+        border-left: none;
+        background-color: var(--white-baseBlue);
+      }
+
+      .input-group-append .btn.btn-secondary i.fa.fa-times::before {
+        content: '\f62a';
+        font-family: "bootstrap-icons" !important;
+        font-size: 1rem;
+        color: var(--darkGrey-lightGrey);
+      }
+
+      .dropdown-item {
+        padding: 0.75rem 0.5rem;
+        color: var(--darkGrey-lightGrey);
+
+        span {
+          margin-left: 0.75rem;
+        }
+        
+        &:hover {
+          background-color: var(--lightGrey-darkGrey);
+        }
+        
+        &.active {
+          background-color: var(--mediumLightGrey-layoutBlue);
+          color: var(--darkGrey-lightGrey);
+        }
+      }
+    }
+  } 
+}
+
+// Media queries
+@media screen and (max-width: 768px) {
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  ngx-bootstrap-multiselect .btn-group .multiselect {
+    padding: 0.65rem;
+    font-size: 0.95rem;
+  }
+}

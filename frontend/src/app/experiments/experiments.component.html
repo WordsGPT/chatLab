@@ -1,0 +1,32 @@
+<div class="home-container">
+
+  <!-- Experiment Introduction -->
+  @if(recentExperiments().length === 0 && featuredExperiments().length === 0) {
+    <app-experiment-intro/>
+  }
+
+  <!-- Accordion for Experiment Form and History -->
+  <accordion class="experiment-accordion" [isAnimated]="true">
+
+    <!-- Experiment Form -->
+    <accordion-group>
+      <div accordion-heading>
+        <span>Create Experiment</span>
+      </div>
+
+      <app-experiment-form/>
+    </accordion-group>
+
+    <!-- Experiment History -->
+    <accordion-group>
+      <div accordion-heading>
+        <span>History</span>
+        <button class="btn view-all-btn" (click)="viewAll($event)">View all</button>
+      </div>
+
+      <app-experiment-history-lite/>
+    </accordion-group>
+
+  </accordion>
+  
+</div>

@@ -1,0 +1,244 @@
+// Drag and Drop Component Styles
+.drag-drop-container {
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 1.5rem;
+
+  // Drag and Drop Area
+  .drop-zone {
+    padding: 3rem 2rem;
+    border: 2px dashed var(--dark-grey);
+    border-radius: 12px;
+    position: relative;
+    text-align: center;
+    background: var(--white-lightGrey);
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover,
+    &.drag-over {
+      background: transparent;
+      border-color: var(--mainBlue-turquoise);
+
+      .drop-icon {
+        color: var(--mainBlue-turquoise);
+      }
+    }
+
+    // Content inside drop zone
+    .drop-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    // Upload Icon
+    .drop-icon {
+      margin-bottom: 1rem;
+      font-size: 3rem;
+      color: var(--darker-light-grey);
+    }
+
+    // Instructional Text
+    .drop-text {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--dark-grey);
+
+      .highlight {
+        font-weight: 600;
+        color: var(--mainBlue-turquoise);
+      }
+    }
+
+    // Selected File Display
+    .file-selected {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--green);
+
+      .file-icon {
+        font-size: 1.5rem;
+        color: var(--green);
+      }
+
+      .file-name {
+        flex: 1;
+        text-align: left;
+        word-break: break-all;
+        font-weight: 500;
+        color: var(--dark-grey);
+      }
+
+      .remove-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.25rem;
+        border: none;
+        border-radius: 4px;
+        background: none;
+        color: var(--dark-grey);
+
+        &:hover {
+          background: var(--orange);
+        }
+
+        i {
+          font-size: 1.25rem;
+        }
+      }
+    }
+
+    .file-input {
+      display: none;
+    }
+  }
+
+  // Action Buttons
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    .btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 500;
+
+      &.btn-primary {
+        background: var(--mainBlue-turquoise);
+        color: var(--white);
+
+        &:hover:not(:disabled),
+        &:focus:not(:disabled) {
+          background: var(--mediumBlue-mediumTurquoise);
+        }
+
+        &:active:not(:disabled) {
+          background: var(--darkerBlue-darkerTurquoise);
+        }
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+
+      &.btn-secondary {
+        border: 1px solid var(--darker-grey);
+        background: var(--medium-light-grey);
+        color: var(--dark-grey);
+
+        &:hover,
+        &:focus {
+          background: var(--darker-light-grey);
+        }
+
+        &:active {
+          background: var(--darker-grey);
+          color: var(--light-grey);
+        }
+      }
+    }
+  }
+}
+
+// Media queries
+@media screen and (max-width: 768px) {
+  .drag-drop-container {
+    max-width: 90%;
+    padding: 1rem;
+
+    .drop-zone {
+      padding: 2.5rem 1.5rem;
+
+      .drop-icon {
+        font-size: 2.5rem;
+      }
+
+      .drop-text {
+        font-size: 1rem;
+      }
+
+      .file-selected {
+        padding: 0.75rem;
+
+        .file-icon {
+          font-size: 1.25rem;
+        }
+
+        .file-name {
+          font-size: 0.95rem;
+        }
+
+        .remove-btn i {
+          font-size: 1.1rem;
+        }
+      }
+    }
+
+    .actions {
+      flex-direction: column;
+      gap: 0.75rem;
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .drag-drop-container {
+    max-width: 95%;
+    padding: 0.75rem;
+
+    .drop-zone {
+      padding: 2rem 1rem;
+
+      .drop-icon {
+        font-size: 2rem;
+      }
+
+      .drop-text {
+        font-size: 0.95rem;
+      }
+
+      .file-selected {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.5rem;
+
+        .file-icon {
+          font-size: 1.1rem;
+        }
+
+        .file-name {
+          font-size: 0.9rem;
+        }
+
+        .remove-btn i {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .actions {
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+}

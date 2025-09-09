@@ -1,0 +1,27 @@
+<section class="experiment-history">
+
+  <!-- Featured Experiments -->
+  @if(featuredExperiments().length !== 0) {
+    <h3>Featured Experiments</h3>
+    <card-experiment-history 
+      [experiments]="featuredExperiments().slice(0, 6)"
+      [showDescription]="false"
+    />
+  }
+
+  <!-- Recent Experiments -->
+  @if(recentExperiments().length !== 0) {
+    <h3>Recent Experiments</h3> 
+    <card-experiment-history 
+      [experiments]="recentExperiments().slice(0, 6)"
+      [showDescription]="false"
+    />
+  }
+
+  @if((featuredExperiments().length === 0) && (recentExperiments().length === 0)) {
+    <div class="history-empty">
+			<p>The experiment <b>history</b> is <b>empty</b>.</p>
+		</div>
+  }
+
+</section>
