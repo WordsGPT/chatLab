@@ -1,0 +1,26 @@
+<div class="settings-wrapper">
+  <!-- Back Button -->
+  <button class="btn-back-floating" (click)="goBack()">
+    <i class="bi bi-arrow-left"></i>
+  </button>
+
+  <!-- Settings Navigation and Content -->
+  <div class="settings-container">
+
+    <!-- Settings Navigation -->
+    <div class="settings-nav">
+      <h2>Settings</h2>
+      <nav>
+        <a routerLink="profile" routerLinkActive="active">Profile</a>
+        <a routerLink="change-password" routerLinkActive="active">Change Password</a>
+        <a routerLink="preferences" routerLinkActive="active">Preferences</a>
+        <a routerLink="account" routerLinkActive="active">Account</a>
+      </nav>
+    </div>
+    
+    <!-- Settings Content -->
+    <div class="settings-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

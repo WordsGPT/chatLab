@@ -1,0 +1,146 @@
+// Login and Register container
+.login,
+.register {
+  // Layout and general style
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  margin: auto;
+  margin-bottom: 2rem;
+  padding: 2.5rem 3rem;
+
+  border-radius: 0.375rem;
+  background-color: var(--main-blue);
+  color: var(--light-grey);
+
+  // Form styles
+  form {
+    
+    // Form groups
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.5rem;
+
+      label {
+        margin-bottom: 0.5rem;
+      }
+
+      input {
+        margin-bottom: 0.25rem;
+      }
+    }
+
+    // Error messages
+    .error-message {
+      margin-left: 0.5rem;
+    }
+
+    // Submit buttons (login & register)
+    .btn-login,
+    .btn-register {
+      width: 100%;
+      margin-top: 0.5rem;
+
+      font-weight: bold;
+      color: var(--main-blue);
+
+      background-color: var(--secondary-turquoise);
+      border: 1px solid var(--secondary-turquoise);
+
+      transition: all 0.3s ease;
+
+      // Hover & focus states
+      &:hover,
+      &:focus {
+        background-color: var(--light-turquoise);
+      }
+
+      // Active state
+      &:active {
+        background-color: var(--medium-turquoise);
+        border: 1px solid var(--medium-turquoise);
+      }
+    }
+  }
+
+  // Links to switch between login/register
+  .register-link,
+  .login-link {
+    margin-top: 1rem;
+    text-align: center;
+
+    font-size: 0.95rem;
+    color: var(--light-grey);
+
+    a {
+      font-weight: 500;
+      color: var(--secondary-turquoise);
+      text-decoration: underline;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: var(--light-turquoise);
+      }
+
+      &:active {
+        color: var(--medium-turquoise);
+      }
+    }
+  }
+
+  // Password and Confirm Password input containers
+  .password-input-container,
+  .confirmPassword-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    // Extra padding for toggle button space
+    .form-control {
+      padding-right: 2.5rem;
+    }
+
+    // Password toggle button
+    .password-toggle-btn {
+      position: absolute;
+      top: 50%;
+      right: 0.5rem;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 2rem;
+      height: 2rem;
+      padding: 0;
+      border: none;
+      background: transparent;
+
+      i {
+        font-size: 1.1rem;
+        color: var(--dark-grey);
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: var(--darker-grey);
+        }
+      }
+    }
+  }
+
+  // Remove default invalid background icons
+  #password.is-invalid,
+  #confirmPassword.is-invalid {
+    background-image: none;
+  }
+
+  // Media queries
+  @media screen and (min-width: 768px) and (max-width: 1200px) {
+    width: 60%;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 70%;
+  }
+}
