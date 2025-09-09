@@ -1,0 +1,88 @@
+<section class="account-container">
+  <!-- Account Settings Header -->
+  <h2>Account</h2>
+
+  <!-- Account Settings Form -->
+  <div class="account-items">
+
+    <!-- Log out section -->
+    <div class="logout-item">
+        <h3>Log out on this device</h3>
+      <div class="action-button">
+        <button type="button" class="btn btn-secondary btn-outline" (click)="logout()">
+          Log out
+        </button>
+      </div>
+    </div>
+
+    <!-- Delete account section -->
+    <div class="delete-item">
+        <h3>Delete your account</h3>
+      <div class="action-button">
+        <button type="button" class="btn btn-secondary btn-outline" (click)="openDeleteModal()">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Account Confirmation Modal -->
+  @if(showDeleteModal) {
+    <div class="modal-overlay">
+
+      <!-- Modal Content -->
+      <div class="modal-content">
+
+        <!-- Modal Intro -->
+        <div class="modal-header">
+          <h3>Delete Account?</h3>
+          <button type="button" class="modal-close" (click)="closeDeleteModal()">
+            <i class="bi bi-x"></i>
+          </button>
+        </div>
+
+        <!-- Modal Body: confirmation form for account deletion -->
+        <div class="modal-body">
+          <p>This action will permanently delete your account and all associated data.</p>
+          <p><strong>This action cannot be undone.</strong></p>
+
+          <form [formGroup]="deleteForm">
+            <div class="confirmation-input">
+              <label for="confirmDelete">To confirm, type "DELETE" in the field below:</label>
+              <input 
+                type="text" 
+                id="confirmDelete"
+                placeholder="DELETE"
+                class="confirm-input"
+                formControlName="confirmDelete"
+              >
+            </div>
+          </form>
+        </div>
+
+        <!-- Modal Actions: buttons for canceling or confirming deletion -->
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary btn-outline" (click)="closeDeleteModal()">
+            Cancel
+          </button>
+          <button 
+            type="button" 
+            class="btn btn-secondary btn-danger"
+            [disabled]="deleteForm.invalid"
+            (click)="deleteAccount()"
+          >
+            @if (loading()) {
+              <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> 
+              Deleting...
+            } @else {
+              Permanently Delete Account
+            }
+          </button>
+        </div>
+        
+      </div>
+
+    </div>
+  }
+  
+</section>
