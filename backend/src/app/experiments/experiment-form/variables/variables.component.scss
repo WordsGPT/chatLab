@@ -1,0 +1,276 @@
+// Variables component styles
+fieldset {
+  // Fieldset legend
+  legend {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--darkGrey-lightGrey);
+  }
+
+  // Variables container
+  .variables {
+    border: 2px solid var(--darkGrey-lightGrey);
+    border-radius: 8px;
+
+    // Variable title group
+    .variable-title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      margin: 1rem 0;
+
+      h3 {
+        margin: 0 1rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--darkGrey-lightGrey);
+      }
+
+      button.advanced-config {
+        margin-left: 1rem;
+        font-size: 0.9rem;
+        color: var(--mainBlue-turquoise);
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+          color: var(--mediumBlue-mediumTurquoise);
+        }
+
+        &:active {
+          color: var(--darkerBlue-darkerTurquoise);
+        }
+      }
+    }
+
+    // Control variable button
+    button.control-variable {
+      display: block;
+      margin: 1rem auto;
+      padding: 0;
+      border: none;
+      background: none;
+      text-align: center;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--mainBlue-turquoise);
+
+      &:hover,
+      &:focus {
+        color: var(--mediumBlue-mediumTurquoise);
+      }
+
+      &:active {
+        color: var(--darkerBlue-darkerTurquoise);
+      }
+    }
+
+    // Variable group
+    .variable-group {
+      padding: 0 1rem;
+
+      // Variable group main content
+      .variable-group-main {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+
+        label {
+          margin: 0;
+          font-size: 1rem;
+          font-weight: 500;
+          color: var(--darkGrey-lightGrey);
+        }
+
+        input.form-control,
+        select.form-control,
+        textarea.form-control {
+          width: 100%;
+          margin-bottom: 0;
+          padding: 0.75rem;
+          border: 1.5px solid var(--medium-light-grey);
+          border-radius: 8px;
+          background-color: var(--white-baseBlue);
+          font-size: 1rem;
+          color: var(--darkGrey-lightGrey);
+
+          &:focus {
+            border-color: var(--main-blue);
+            box-shadow: 0 0 0 3px rgba(var(--main-blue), 0.1);
+            outline: none;
+          }
+
+          &.is-invalid {
+            border-color: var(--orange);
+            box-shadow: 0 0 0 3px rgba(var(--orange), 0.1);
+          }
+
+          &::placeholder {
+            color: var(--darkGrey-lightGrey);
+          }
+        }
+
+        input.form-control:-webkit-autofill {
+          -webkit-box-shadow: 0 0 0px 1000px var(--white-baseBlue) inset;
+          -webkit-text-fill-color: var(--darkGrey-lightGrey);
+        }
+      }
+
+      // Variable group validations
+      .validations {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+
+        .form-group-item {
+          margin-top: 0.75rem;
+        }
+
+        label {
+          margin: 0.5rem;
+          font-size: 1rem;
+          font-weight: 500;
+          color: var(--darkGrey-lightGrey);
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+          padding: 0.75rem;
+          border: 1.5px solid var(--medium-light-grey);
+          border-radius: 8px;
+          background-color: var(--white-baseBlue);
+          font-size: 1rem;
+          color: var(--darkGrey-lightGrey);
+
+          &:focus {
+            border-color: var(--main-blue);
+            box-shadow: 0 0 0 3px rgba(var(--main-blue), 0.1);
+            outline: none;
+          }
+
+          &::placeholder {
+            color: var(--darkGrey-lightGrey);
+          }
+        }
+
+        input.form-control:-webkit-autofill {
+          -webkit-box-shadow: 0 0 0px 1000px var(--white-baseBlue) inset;
+          -webkit-text-fill-color: var(--darkGrey-lightGrey);
+        }
+
+        textarea.form-control {
+          min-height: 80px;
+          resize: vertical;
+        }
+
+        input[type="checkbox"] {
+          margin: 0 0.5rem;
+          cursor: pointer;
+        }
+
+        h3 {
+          margin: 1rem 1rem 0.5rem 1rem;
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: var(--darkGrey-lightGrey);
+        }
+      }
+
+      // Error messages
+      small.text-danger,
+      small.error-message {
+        display: block;
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--orange);
+      }
+    }
+  }
+}
+
+// Media queries
+@media screen and (max-width: 768px) {
+  fieldset {
+    .variables {
+      .variable-title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        margin-left: 1rem;
+
+        h3 {
+          margin: 0.5rem 0;
+          font-size: 1rem;
+        }
+
+        button.advanced-config {
+          margin-left: 0;
+          font-size: 0.85rem;
+        }
+      }
+
+      button.control-variable {
+        margin: 0.75rem auto;
+        font-size: 0.9rem;
+      }
+
+      .variable-group {
+        padding: 0.5rem;
+
+        .variable-group-main {
+          flex-direction: column;
+          gap: 0.5rem;
+
+          label {
+            font-size: 0.95rem;
+          }
+
+          input.form-control,
+          select.form-control,
+          textarea.form-control {
+            padding: 0.65rem;
+            font-size: 0.95rem;
+          }
+        }
+
+        .validations {
+          gap: 0.75rem;
+          padding: 0.5rem;
+
+          label {
+            margin: 0.25rem 0;
+            font-size: 0.95rem;
+          }
+
+          input[type="text"],
+          input[type="number"],
+          textarea {
+            padding: 0.65rem;
+            font-size: 0.95rem;
+          }
+
+          textarea.form-control {
+            min-height: 60px;
+          }
+
+          h3 {
+            margin: 0.5rem 0 0.25rem 0;
+            font-size: 1rem;
+          }
+        }
+
+        small.text-danger,
+        small.error-message {
+          margin-top: 0.25rem;
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
+}

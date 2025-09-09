@@ -1,0 +1,122 @@
+// Prompts component styles
+fieldset {
+
+  // Fieldset legend
+  legend {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--darkGrey-lightGrey);
+  }
+
+  // Prompts container
+  .prompts {
+    padding: 2rem 0;
+    border: 2px solid var(--darkGrey-lightGrey);
+    border-radius: 8px;
+  }
+
+  // Prompt group
+  .prompt-group {
+    padding: 0 1rem;
+
+    button {
+      display: block;
+      margin: 0 auto;
+      padding: 0;
+      border: none;
+      background: none;
+      text-align: center;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--mainBlue-turquoise);
+
+      &:hover,
+      &:focus {
+        color: var(--mediumBlue-mediumTurquoise);
+      }
+
+      &:active {
+        color: var(--darkerBlue-darkerTurquoise);
+      }
+    }
+
+    .prompt {
+      margin-bottom: 1rem;
+
+      label {
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--darkGrey-lightGrey);
+      }
+
+      input.form-control {
+        padding: 0.75rem;
+        border: 1.5px solid var(--medium-light-grey);
+        border-radius: 8px;
+        background-color: var(--white-baseBlue);
+        color: var(--darkGrey-lightGrey);
+        font-size: 1rem;
+
+        &::placeholder {
+          color: var(--darkGrey-lightGrey);
+        }
+
+        &:focus {
+          border-color: var(--main-blue);
+          outline: none;
+          box-shadow: 0 0 0 3px rgba(var(--main-blue), 0.1);
+        }
+
+        &.is-invalid {
+          border-color: var(--orange);
+          box-shadow: 0 0 0 3px rgba(var(--orange), 0.1);
+        }
+      }
+
+      .dropdown-menu {
+        overflow-y: auto;
+        max-height: 200px;
+        padding: 0;
+        border: 1px solid var(--medium-light-grey);
+        border-radius: 8px;
+        background-color: var(--white-baseBlue);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+        button.dropdown-item {
+          width: 100%;
+          padding: 0.75rem 1rem;
+          border: none;
+          background-color: transparent;
+          text-align: left;
+          color: var(--darkGrey-lightGrey);
+
+          &.active {
+            background-color: var(--lightGrey-layoutBlue);
+          }
+        }
+      }
+
+      small.text-danger,
+      small.error-message {
+        display: block;
+        margin-top: 0.25rem;
+        font-size: 0.9rem;
+        color: var(--orange);
+      }
+    }
+  }
+}
+
+// Media queries
+@media screen and (max-width: 768px) {
+  .prompt-group {
+    padding: 1rem;
+
+    .prompt input.form-control {
+      padding: 0.65rem;
+      font-size: 0.95rem;
+    }
+  }
+}

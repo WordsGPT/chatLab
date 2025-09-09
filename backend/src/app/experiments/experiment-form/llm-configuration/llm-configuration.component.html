@@ -1,0 +1,91 @@
+<div [formGroup]="parentForm()" class="llm-config">
+  
+  <!-- Toggle button for advanced configuration -->
+  <button type="button" class="btn btn-link advanced-config"
+    (click)="isLlmConfigOpen = !isLlmConfigOpen">
+      {{ isLlmConfigOpen ? 'Hide advanced configuration' : 'Show advanced configuration' }}
+  </button>
+
+  <!-- Advanced configuration options -->
+  <div [collapse]="!isLlmConfigOpen">
+    <fieldset formGroupName="llmConfig" class="llm-config">
+      <legend>LLM Configuration</legend>
+
+      <!-- Temperature Field -->
+      <div class="form-group">
+        <label for="temperature">Temperature</label>
+        <input
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted() && (isFieldInvalid('llmConfig.temperature', 'required') || isFieldInvalid('llmConfig.temperature', 'min') || isFieldInvalid('llmConfig.temperature', 'max'))
+          }"
+          type="number"
+          id="temperature"
+          formControlName="temperature"
+          step="0.1"
+          min="0"
+          max="2"
+          placeholder="0 - 2"
+        >
+        @if (submitted() && isFieldInvalid('llmConfig.temperature', 'required')) {
+          <small class="text-danger error-message">Temperature is required</small>
+        }
+        @if (submitted() && isFieldInvalid('llmConfig.temperature', 'min')) {
+          <small class="text-danger error-message">Temperature must be at least 0</small>
+        }
+        @if (submitted() && isFieldInvalid('llmConfig.temperature', 'max')) {
+          <small class="text-danger error-message">Temperature must be at most 2</small>
+        }
+      </div>
+
+      <!-- Top P Field -->
+      <div class="form-group">
+        <label for="top_p">Top P</label>
+        <input
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted() && (isFieldInvalid('llmConfig.top_p', 'required') || isFieldInvalid('llmConfig.top_p', 'min') || isFieldInvalid('llmConfig.top_p', 'max'))
+          }"
+          type="number"
+          id="top_p"
+          formControlName="top_p"
+          step="0.1"
+          min="0"
+          max="1"
+          placeholder="0 - 1"
+        >
+        @if (submitted() && isFieldInvalid('llmConfig.top_p', 'required')) {
+        <small class="text-danger error-message">Top P is required</small>
+        }
+        @if (submitted() && isFieldInvalid('llmConfig.top_p', 'min')) {
+          <small class="text-danger error-message">Top P must be at least 0</small>
+        }
+        @if (submitted() && isFieldInvalid('llmConfig.top_p', 'max')) {
+          <small class="text-danger error-message">Top P must be at most 1</small>
+        }
+      </div>
+
+      <!-- Max Tokens Field -->
+      <div class="form-group">
+        <label for="max_tokens">Max Tokens</label>
+        <input
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted() && (isFieldInvalid('llmConfig.max_tokens', 'required') || isFieldInvalid('llmConfig.max_tokens', 'min'))
+          }"
+          type="number"
+          id="max_tokens"
+          formControlName="max_tokens"
+          min="1"
+          placeholder="Introduce max tokens"
+        >
+        @if (submitted() && isFieldInvalid('llmConfig.max_tokens', 'required')) {
+        <small class="text-danger error-message">Max Tokens is required</small>
+        }
+        @if (submitted() && isFieldInvalid('llmConfig.max_tokens', 'min')) {
+          <small class="text-danger error-message">Max Tokens must be at least 1</small>
+        }
+      </div>
+    </fieldset>
+  </div>
+</div>

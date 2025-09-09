@@ -1,0 +1,49 @@
+// Experiment introduction styles
+.introduction {
+  text-align: center;
+  margin-bottom: 3rem;
+  background-color: var(--white-baseBlue);
+
+  // Introduction title styles
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--mainBlue-turquoise);
+  }
+
+  // Introduction paragraph styles
+  p {
+    margin: 0 auto;
+    max-width: 800px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--darkGrey-lightGrey);
+
+    .logo-font {
+      color: var(--mainBlue-turquoise);
+      font-weight: 500;
+    }
+
+    b {
+      color: var(--mainBlue-turquoise);
+      font-weight: 600;
+    }
+  }
+}
+
+// Media queries
+@media screen and (max-width: 768px) {
+  .introduction {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+      
+    h2 {
+      font-size: 1.5rem;
+    }
+      
+    p {
+      font-size: 1rem;
+    }
+  }
+}

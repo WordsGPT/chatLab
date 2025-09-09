@@ -1,0 +1,119 @@
+// Experiment Information Styles
+.experiment-info {
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  // Experiment Section Containers
+  .description-info,
+  .model-list-info,
+  .prompts-list-info,
+  .variables-list-info,
+  .configuration-info {
+    padding: 0.3rem 1rem;
+  }
+
+  // Experiment Name
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--mainBlue-turquoise);
+  }
+
+  // Experiment Section Headers
+  h4 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: var(--mainBlue-turquoise);
+  }
+
+  // Experiment Description
+  p {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--darkGrey-lightGrey);
+  }
+
+  // Experiment Section Lists
+  ul,
+  ol {
+    margin: 0;
+    padding-left: 1.25rem;
+
+    // Experiment Section List Items
+    li {
+      margin: 0.25rem 0rem;
+      font-size: 1rem;
+      color: var(--darkGrey-lightGrey);
+
+      strong {
+        font-weight: 600;
+        color: var(--darkGrey-lightGrey);
+      }
+
+      // Experiment Variable Description
+      p {
+        margin: 0.25rem 0 0.5rem 0;
+        font-size: 0.9rem;
+        color: var(--darkGrey-lightGrey);
+      }
+
+      // Experiment Variable Validations
+      ul {
+        margin-top: 0.25rem;
+        padding-left: 1.25rem;
+
+        li {
+          font-size: 0.85rem;
+          color: var(--darkGrey-lightGrey);
+        }
+      }
+    }
+  }
+}
+
+// Media queries
+@media screen and (max-width: 768px) {
+  .experiment-info {
+    padding: 0.8rem;
+    gap: 0.8rem;
+
+    h3 {
+      font-size: 1.1rem;
+    }
+
+    h4 {
+      font-size: 0.95rem;
+    }
+
+    p,
+    ul li {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .experiment-info {
+    padding: 0.6rem;
+    gap: 0.6rem;
+
+    h3 {
+      font-size: 1rem;
+    }
+
+    h4 {
+      font-size: 0.9rem;
+    }
+
+    p,
+    ul li {
+      font-size: 0.85rem;
+    }
+  }
+}
