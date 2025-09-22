@@ -65,3 +65,55 @@ Before getting started, make sure you have the following installed:
 
 ### Backend
 - **NestJS** >= v11.0.7
+
+## Installation
+
+### Option 1: Deploy with Docker
+
+This is the simplest way to get the platform running. Docker will handle all dependencies for you.
+
+1. **Clone the repository**:
+
+```sh
+  git clone [https://github.com/WordsGPT/chatLab.git](https://github.com/WordsGPT/chatLab.git)
+  cd chatLab
+```
+
+All services (backend, frontend, PostgreSQL, LiteLLM proxy) will be automatically started.
+No additional installation of Node.js, Angular, NestJS, or PostgreSQL is required.
+
+### Option 2: Local Setup
+
+If you want to run the platform locally without Docker, make sure you have all the requirements listed in the **Requirements** section installed.  
+To simplify the installation, a `package.json` has been added in the root folder, allowing you to install all dependencies for both backend and frontend from the root folder.
+
+1. **Clone the repository with submodules**:
+
+```sh
+  git clone --recurse-submodules [https://github.com/WordsGPT/chatLab.git](https://github.com/WordsGPT/chatLab.git)
+  cd chatLab
+```
+
+> If you already cloned the repository without `--recurse-submodules`, you can initialize and update the submodules with:
+>
+> ```sh
+> git submodule update --init --recursive
+> ```
+
+2. **Install dependencies**:
+
+```sh
+  npm run install
+```
+
+> If you prefer, you can also install the backend and frontend dependencies individually from the root folder with:
+>
+> - Backend:
+> ```sh
+> npm run backend-install
+> ```
+>
+> - Frontend:
+> ```sh
+> npm run frontend-install
+> ```
