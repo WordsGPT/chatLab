@@ -10,6 +10,8 @@ The platform follows a modular architecture:
 - NestJS backend with PostgreSQL.
 - LiteLLM proxy for LLM provider abstraction.
 
+![Architecture](images/Architecture.png)
+
 ## Use Case Diagram
 The use case diagram provides an overview of the main functionalities of the system and how different actors interact with it.  
 This type of diagram helps to identify the objectives users can achieve through the application, as well as the relationships between the different use cases and the actors involved.
@@ -17,6 +19,8 @@ This type of diagram helps to identify the objectives users can achieve through 
 The main actors of the application are the **User** and the **Administrator**.  
 In the diagram, the **Administrator** inherits from the **User**, since they share the same use cases but add three additional functionalities exclusive to their role.  
 As for the secondary actors, only the **LLM models** are included, which intervene during the execution of experiments by being queried to generate the corresponding responses.
+
+![Use Case Diagram](images/Use_Case_Diagram.png)
 
 ## Domain Model Diagram
 The domain model represents a conceptual view of the main elements of the system.  
@@ -40,7 +44,9 @@ This model serves as the foundation for the logical architecture, the database d
 - **Prompts** belong to a single **User**, but can be reused across multiple **Experiments**.  
 - A **Query** belongs to one **User** and one **Experiment**.  
 - A **Variable** always belongs to a single **Experiment**.  
-- A **Provider** can offer multiple **LLM Models**, which can be associated with different **Experiments**.  
+- A **Provider** can offer multiple **LLM Models**, which can be associated with different **Experiments**.
+
+![Domain Model Diagram](images/Domain_Diagram.png)
 
 ## Requirements
 
