@@ -1,7 +1,5 @@
 # ChatWords
 
-# ChatWords
-
 [![ChatWords](https://img.shields.io/badge/Project-ChatWords-blueviolet.svg)](https://github.com/WordsGPT/ChatWords)
 [![License](https://img.shields.io/github/license/WordsGPT/ChatWords)](https://github.com/WordsGPT/ChatWords/blob/main/LICENSE)
 [![](https://img.shields.io/badge/Open%20Source-Yes-green)](https://github.com/WordsGPT/ChatWords)
