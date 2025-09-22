@@ -1,2 +1,13 @@
-.env
-__pycache__
+# Node.js dependencies
+backend/node_modules/
+frontend/node_modules/
+
+# Build output
+backend/dist/
+frontend/dist/
+
+# Environment files
+backend/.env
+
+# Configuration files
+proxy-llm/config.yaml
