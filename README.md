@@ -127,3 +127,23 @@ LITELLM_MASTER_KEY=<your_master_key>
 LITELLM_SALT_KEY=<your_salt_key>
 ```
 
+4. **Configure PostgreSQL connection**:
+
+Check the `.env` file located in the root folder.  
+By default, it already includes the necessary variables to connect to PostgreSQL.  
+
+- First, verify if the default values work in your local environment.  
+- If not, update them according to your PostgreSQL configuration.
+
+5. **Configure LLM providers**
+
+To enable the use of different LLMs, you must configure their corresponding API keys and the `MODELS` variable in the `.env` file at the root folder.  
+
+- **API keys**: provide the API key of each LLM provider you want to use (e.g., OpenAI, Anthropic, etc.).  
+- **MODELS**: define the available models following the format described in the comments of the `.env` file.
+
+6. **Optional - Configure additional environment variables:**
+
+You can also configure extra variables in the `.env` file at the root folder. 
+- **JWT Authentication**: set secret keys for signing Access and Refresh tokens.
+- **Default Admin User**: define the credentials of the initial administrator account created in the system.
