@@ -1,5 +1,14 @@
 # ChatWords
 
+# ChatWords
+
+[![ChatWords](https://img.shields.io/badge/Project-ChatWords-blueviolet.svg)](https://github.com/WordsGPT/ChatWords)
+[![License](https://img.shields.io/github/license/WordsGPT/ChatWords)](https://github.com/WordsGPT/ChatWords/blob/main/LICENSE)
+[![](https://img.shields.io/badge/Open%20Source-Yes-green)](https://github.com/WordsGPT/ChatWords)
+[![Angular](https://img.shields.io/badge/Angular-%3E=19.2-red.svg)](https://angular.io/)
+[![NestJS](https://img.shields.io/badge/NestJS-%3E=11.0.7-orange.svg)](https://nestjs.com/)
+
+
 This project is a robust and scalable platform for the management and automation of experiments with **Large Language Models (LLMs)**. It allows users to create, parameterize, and run tests in a structured, efficient, and reproducible manner.
 
 The tool is an expansion of the base project **ChatWords**, with the goal of being more accessible to users without programming knowledge. Experiments are defined with custom variables and prompts, and the results are logged in a database, facilitating the analysis and optimization of the models.
@@ -234,6 +243,9 @@ docker-compose up
 ```
 
 This will start the LiteLLM proxy service, allowing you to connect to your configured LLM providers.
+
+> **Note:** For now, you will need to manually add the models defined in step 5 of the local installation through the LiteLLM proxy web interface.  
+> This is a temporary step until the **Future Work** item regarding administrator use cases is implemented.
 
 ## Important Endpoints
 
