@@ -82,6 +82,47 @@ This is the simplest way to get the platform running. Docker will handle all dep
 All services (backend, frontend, PostgreSQL, LiteLLM proxy) will be automatically started.
 No additional installation of Node.js, Angular, NestJS, or PostgreSQL is required.
 
+2. **Configure the LiteLLM `config.yaml`**:
+
+Edit the `config.yaml` file inside the `litellm` folder.  
+Use placeholders to fill in your values; this file is required to access the LiteLLM UI and to connect to LLM providers:
+
+- `<your_model_alias>`: alias for the LLM model.
+- `<your_model_name>`: name of the LLM model (e.g., `gpt-4.1-nano`).
+- `<your_provider_api_key>`: API key for the selected LLM provider.
+- `<db_user>`, `<db_password>`, `<db_host>`, `<db_port>`, `<db_name>`: PostgreSQL connection details.
+- `<your_master_key>`: master key of the LiteLLM proxy server. You can use any value for the key (for example, `sk-1234`); these value is used both to access the LiteLLM UI and to make queries to the LLMs.
+
+3. **Configure PostgreSQL connection**:
+
+Edit the `.env` file located in the backend folder and fill in the fields related to PostgreSQL.  
+The file already contains default values configured for Docker Compose, so you just need to uncomment them if you want to use them.
+
+- Make sure to use the same values as specified in the `config.yaml` file from step 2 to keep the database connection consistent.
+- If you prefer to use your own PostgreSQL setup, update the variables accordingly.
+
+4. **Configure LLM providers**
+
+To enable the use of different LLMs, you must configure their corresponding API keys, the `MODELS` variable, and the `LITELLM_MASTER_KEY` in the `.env` file at the backend folder.  
+Make sure that the value of `LITELLM_MASTER_KEY` matches the one defined in step 3.
+- **LITELLM_MASTER_KEY**: set the same value as in step 2.
+- **API keys**: provide the API key of each LLM provider you want to use (e.g., OpenAI, Anthropic, etc.).  
+- **MODELS**: define the available models following the format described in the comments of the `.env` file. You have to use the same values as those set in the `config.yaml` file from step 2.
+
+5. **Optional - Configure additional environment variables:**
+
+You can also configure extra variables in the `.env` file at the backend folder. 
+- **JWT Authentication**: set secret keys for signing Access and Refresh tokens.
+- **Default Admin User**: define the credentials of the initial administrator account created in the system.
+
+6. **Build the services with Docker Compose**:
+
+From the root folder of the project, run the following command to build all services (backend, frontend, PostgreSQL, LiteLLM proxy):
+
+```sh
+docker-compose build
+```
+
 ### Option 2: Local Setup
 
 If you want to run the platform locally without Docker, make sure you have all the requirements listed in the **Requirements** section installed.  
@@ -120,7 +161,7 @@ To simplify the installation, a `package.json` has been added in the root folder
 
 3. **Create a `.env` file for the LiteLLM proxy**:
 
-Create a `.env` file inside the `litellm` folder with the following content. You can use any value for the keys (for example, `sk-1234` for both); this file is only needed to access the LiteLLM UI:
+Create a `.env` file inside the `litellm` folder with the following content. You can use any value for the keys (for example, `sk-1234` for both); these values are used both to access the LiteLLM UI and to make queries to the LLMs.
 
 ```env
 LITELLM_MASTER_KEY=<your_master_key>
@@ -129,7 +170,7 @@ LITELLM_SALT_KEY=<your_salt_key>
 
 4. **Configure PostgreSQL connection**:
 
-Check the `.env` file located in the root folder.  
+Check the `.env` file located in the backend folder.  
 By default, it already includes the necessary variables to connect to PostgreSQL.  
 
 - First, verify if the default values work in your local environment.  
@@ -137,7 +178,7 @@ By default, it already includes the necessary variables to connect to PostgreSQL
 
 5. **Configure LLM providers**
 
-To enable the use of different LLMs, you must configure their corresponding API keys, the `MODELS` variable, and the `LITELLM_MASTER_KEY` in the `.env` file at the root folder.  
+To enable the use of different LLMs, you must configure their corresponding API keys, the `MODELS` variable, and the `LITELLM_MASTER_KEY` in the `.env` file at the backend folder.  
 Make sure that the value of `LITELLM_MASTER_KEY` matches the one defined in step 3.
 - **LITELLM_MASTER_KEY**: set the same value as in step 3.
 - **API keys**: provide the API key of each LLM provider you want to use (e.g., OpenAI, Anthropic, etc.).  
@@ -145,6 +186,6 @@ Make sure that the value of `LITELLM_MASTER_KEY` matches the one defined in step
 
 6. **Optional - Configure additional environment variables:**
 
-You can also configure extra variables in the `.env` file at the root folder. 
+You can also configure extra variables in the `.env` file at the backend folder. 
 - **JWT Authentication**: set secret keys for signing Access and Refresh tokens.
 - **Default Admin User**: define the credentials of the initial administrator account created in the system.
