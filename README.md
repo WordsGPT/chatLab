@@ -75,7 +75,7 @@ This is the simplest way to get the platform running. Docker will handle all dep
 1. **Clone the repository**:
 
 ```sh
-  git clone [https://github.com/WordsGPT/chatLab.git](https://github.com/WordsGPT/chatLab.git)
+  git clone https://github.com/WordsGPT/chatLab.git
   cd chatLab
 ```
 
@@ -90,7 +90,7 @@ To simplify the installation, a `package.json` has been added in the root folder
 1. **Clone the repository with submodules**:
 
 ```sh
-  git clone --recurse-submodules [https://github.com/WordsGPT/chatLab.git](https://github.com/WordsGPT/chatLab.git)
+  git clone --recurse-submodules https://github.com/WordsGPT/chatLab.git
   cd chatLab
 ```
 
@@ -117,3 +117,13 @@ To simplify the installation, a `package.json` has been added in the root folder
 > ```sh
 > npm run frontend-install
 > ```
+
+3. **Create a `.env` file for the LiteLLM proxy**:
+
+Create a `.env` file inside the `litellm` folder with the following content. You can use any value for the keys (for example, `sk-1234` for both); this file is only needed to access the LiteLLM UI:
+
+```env
+LITELLM_MASTER_KEY=<your_master_key>
+LITELLM_SALT_KEY=<your_salt_key>
+```
+
