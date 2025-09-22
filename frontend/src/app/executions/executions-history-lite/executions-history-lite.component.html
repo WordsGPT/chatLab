@@ -13,11 +13,20 @@
     </button>
   </div>
 
-  <!-- Execution History Cards -->
   @if (temporalExecutions().length === 0) {
     <div class="history-empty">
-			<p>The temporary execution <b>history</b> is <b>empty</b>.</p>
-		</div>
+      <p>
+        The <b>temporary</b> execution <b>history</b> is <b>empty</b>.
+        @if (executions().length !== 0) {
+          If you want to see all your executions, you can click
+          <button 
+            class="btn btn-link p-0 align-baseline history-link" 
+            (click)="viewAll($event)">
+            view all
+          </button>.
+        }
+      </p>
+    </div>
   } @else {
     <card-execution-history
       [executions]="temporalExecutions().slice(0, 10)"

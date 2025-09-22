@@ -63,6 +63,21 @@
     b {
       color: var(--mainBlue-turquoise);
     }
+
+    .history-link {
+      color: var(--mainBlue-turquoise);
+      font-weight: 500;
+      text-decoration: none;
+
+      &:hover, &:focus {
+        text-decoration: underline;
+      }
+
+      &:active {
+        text-decoration: underline;
+        color: var(--mediumBlue-mediumTurquoise);
+      }
+    }
   }
 }
 

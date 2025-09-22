@@ -25,6 +25,7 @@ export class ExecutionsHistoryLiteComponent implements OnInit {
 
   // Properties to hold temporal executions and the current experiment
   protected readonly temporalExecutions = this.executionService.temporalExecutions;
+  protected readonly executions = this.executionService.executions;
   protected readonly currentExperiment = this.experimentService.currentExperiment;
 
   protected fromRoute?: string;
@@ -39,6 +40,7 @@ export class ExecutionsHistoryLiteComponent implements OnInit {
   ngOnInit(): void {
     if (!this.fromRoute?.includes('/settings')) {
       this.executionService.getTemporalExecutions(this.currentExperiment()!.id);
+      this.executionService.getExecutions(this.currentExperiment()!.id);
     }
   }
 
@@ -55,5 +57,16 @@ export class ExecutionsHistoryLiteComponent implements OnInit {
    */
   protected downloadExcel(): void {
     this.executionService.downloadExcel(this.currentExperiment()!.id, this.currentExperiment()!.prompts);
+  }
+
+  /**
+   * Handles the click event for the "View All" button.
+   * @param event The click event.
+   */
+  protected viewAll(event: Event) {
+    event.stopPropagation();
+    this.router.navigateByUrl('/experiment/history', {
+      state: { from: this.router.url }
+    });
   }
 }
