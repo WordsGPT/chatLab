@@ -127,7 +127,7 @@ You can also configure extra variables in the `.env` file at the backend folder.
 From the root folder of the project, run the following command to build all services (backend and frontend):
 
 ```sh
-docker-compose build
+docker-compose --env-file ./backend/.env build
 ```
 
 ### Option 2: Local Setup
@@ -204,7 +204,7 @@ You can also configure extra variables in the `.env` file at the backend folder.
 From the root folder of the project, simply run:
 
 ```sh
-docker-compose up
+docker-compose --env-file ./backend/.env up
 ```
 
 ### Option 2: Start Locally
