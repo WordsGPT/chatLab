@@ -65,3 +65,86 @@ Before getting started, make sure you have the following installed:
 
 ### Backend
 - **NestJS** >= v11.0.7
+
+## Installation
+
+### Option 1: Deploy with Docker
+
+This is the simplest way to get the platform running. Docker will handle all dependencies for you.
+
+1. **Clone the repository**:
+
+```sh
+  git clone https://github.com/WordsGPT/chatLab.git
+  cd chatLab
+```
+
+All services (backend, frontend, PostgreSQL, LiteLLM proxy) will be automatically started.
+No additional installation of Node.js, Angular, NestJS, or PostgreSQL is required.
+
+### Option 2: Local Setup
+
+If you want to run the platform locally without Docker, make sure you have all the requirements listed in the **Requirements** section installed.  
+To simplify the installation, a `package.json` has been added in the root folder, allowing you to install all dependencies for both backend and frontend from the root folder.
+
+1. **Clone the repository with submodules**:
+
+```sh
+  git clone --recurse-submodules https://github.com/WordsGPT/chatLab.git
+  cd chatLab
+```
+
+> If you already cloned the repository without `--recurse-submodules`, you can initialize and update the submodules with:
+>
+> ```sh
+> git submodule update --init --recursive
+> ```
+
+2. **Install dependencies**:
+
+```sh
+  npm run install
+```
+
+> If you prefer, you can also install the backend and frontend dependencies individually from the root folder with:
+>
+> - Backend:
+> ```sh
+> npm run backend-install
+> ```
+>
+> - Frontend:
+> ```sh
+> npm run frontend-install
+> ```
+
+3. **Create a `.env` file for the LiteLLM proxy**:
+
+Create a `.env` file inside the `litellm` folder with the following content. You can use any value for the keys (for example, `sk-1234` for both); this file is only needed to access the LiteLLM UI:
+
+```env
+LITELLM_MASTER_KEY=<your_master_key>
+LITELLM_SALT_KEY=<your_salt_key>
+```
+
+4. **Configure PostgreSQL connection**:
+
+Check the `.env` file located in the root folder.  
+By default, it already includes the necessary variables to connect to PostgreSQL.  
+
+- First, verify if the default values work in your local environment.  
+- If not, update them according to your PostgreSQL configuration.
+
+5. **Configure LLM providers**
+
+To enable the use of different LLMs, you must configure their corresponding API keys, the `MODELS` variable, and the `LITELLM_MASTER_KEY` in the `.env` file at the root folder.  
+Make sure that the value of `LITELLM_MASTER_KEY` matches the one defined in step 3.
+- **LITELLM_MASTER_KEY**: set the same value as in step 3.
+- **API keys**: provide the API key of each LLM provider you want to use (e.g., OpenAI, Anthropic, etc.).  
+- **MODELS**: define the available models following the format described in the comments of the `.env` file.
+
+6. **Optional - Configure additional environment variables:**
+
+You can also configure extra variables in the `.env` file at the root folder. 
+- **JWT Authentication**: set secret keys for signing Access and Refresh tokens.
+- **Default Admin User**: define the credentials of the initial administrator account created in the system.
