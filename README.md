@@ -72,7 +72,7 @@ Before getting started, make sure you have the following installed:
 
 This is the simplest way to get the platform running. Docker will handle all dependencies for you.
 
-1. **Clone the repository**:
+#### 1. **Clone the repository**:
 
 ```sh
   git clone https://github.com/WordsGPT/chatLab.git
@@ -82,7 +82,7 @@ This is the simplest way to get the platform running. Docker will handle all dep
 All services (backend, frontend, PostgreSQL, LiteLLM proxy) will be automatically started.
 No additional installation of Node.js, Angular, NestJS, or PostgreSQL is required.
 
-2. **Configure the LiteLLM `config.yaml`**:
+#### 2. **Configure the LiteLLM `config.yaml`**:
 
 Edit the `config.yaml` file inside the `litellm` folder.  
 Use placeholders to fill in your values; this file is required to access the LiteLLM UI and to connect to LLM providers:
@@ -93,7 +93,7 @@ Use placeholders to fill in your values; this file is required to access the Lit
 - `<db_user>`, `<db_password>`, `<db_host>`, `<db_port>`, `<db_name>`: PostgreSQL connection details.
 - `<your_master_key>`: master key of the LiteLLM proxy server. You can use any value for the key (for example, `sk-1234`); these value is used both to access the LiteLLM UI and to make queries to the LLMs.
 
-3. **Configure PostgreSQL connection**:
+#### 3. **Configure PostgreSQL connection**:
 
 Edit the `.env` file located in the backend folder and fill in the fields related to PostgreSQL.  
 The file already contains default values configured for Docker Compose, so you just need to uncomment them if you want to use them.
@@ -101,7 +101,7 @@ The file already contains default values configured for Docker Compose, so you j
 - Make sure to use the same values as specified in the `config.yaml` file from step 2 to keep the database connection consistent.
 - If you prefer to use your own PostgreSQL setup, update the variables accordingly.
 
-4. **Configure LLM providers**
+#### 4. **Configure LLM providers**
 
 To enable the use of different LLMs, you must configure their corresponding API keys, the `MODELS` variable, and the `LITELLM_MASTER_KEY` in the `.env` file at the backend folder.  
 Make sure that the value of `LITELLM_MASTER_KEY` matches the one defined in step 3.
@@ -109,15 +109,15 @@ Make sure that the value of `LITELLM_MASTER_KEY` matches the one defined in step
 - **API keys**: provide the API key of each LLM provider you want to use (e.g., OpenAI, Anthropic, etc.).  
 - **MODELS**: define the available models following the format described in the comments of the `.env` file. You have to use the same values as those set in the `config.yaml` file from step 2.
 
-5. **Optional - Configure additional environment variables:**
+#### 5. **Optional - Configure additional environment variables:**
 
 You can also configure extra variables in the `.env` file at the backend folder. 
 - **JWT Authentication**: set secret keys for signing Access and Refresh tokens.
 - **Default Admin User**: define the credentials of the initial administrator account created in the system.
 
-6. **Build the services with Docker Compose**:
+#### 6. **Build the services with Docker Compose**:
 
-From the root folder of the project, run the following command to build all services (backend, frontend, PostgreSQL, LiteLLM proxy):
+From the root folder of the project, run the following command to build all services (backend and frontend):
 
 ```sh
 docker-compose build
@@ -128,7 +128,7 @@ docker-compose build
 If you want to run the platform locally without Docker, make sure you have all the requirements listed in the **Requirements** section installed.  
 To simplify the installation, a `package.json` has been added in the root folder, allowing you to install all dependencies for both backend and frontend from the root folder.
 
-1. **Clone the repository with submodules**:
+#### 1. **Clone the repository with submodules**:
 
 ```sh
   git clone --recurse-submodules https://github.com/WordsGPT/chatLab.git
@@ -141,7 +141,7 @@ To simplify the installation, a `package.json` has been added in the root folder
 > git submodule update --init --recursive
 > ```
 
-2. **Install dependencies**:
+#### 2. **Install dependencies**:
 
 ```sh
   npm run install
@@ -159,7 +159,7 @@ To simplify the installation, a `package.json` has been added in the root folder
 > npm run frontend-install
 > ```
 
-3. **Create a `.env` file for the LiteLLM proxy**:
+#### 3. **Create a `.env` file for the LiteLLM proxy**:
 
 Create a `.env` file inside the `litellm` folder with the following content. You can use any value for the keys (for example, `sk-1234` for both); these values are used both to access the LiteLLM UI and to make queries to the LLMs.
 
@@ -168,7 +168,7 @@ LITELLM_MASTER_KEY=<your_master_key>
 LITELLM_SALT_KEY=<your_salt_key>
 ```
 
-4. **Configure PostgreSQL connection**:
+#### 4. **Configure PostgreSQL connection**:
 
 Check the `.env` file located in the backend folder.  
 By default, it already includes the necessary variables to connect to PostgreSQL.  
@@ -176,7 +176,7 @@ By default, it already includes the necessary variables to connect to PostgreSQL
 - First, verify if the default values work in your local environment.  
 - If not, update them according to your PostgreSQL configuration.
 
-5. **Configure LLM providers**
+#### 5. **Configure LLM providers**
 
 To enable the use of different LLMs, you must configure their corresponding API keys, the `MODELS` variable, and the `LITELLM_MASTER_KEY` in the `.env` file at the backend folder.  
 Make sure that the value of `LITELLM_MASTER_KEY` matches the one defined in step 3.
@@ -184,8 +184,85 @@ Make sure that the value of `LITELLM_MASTER_KEY` matches the one defined in step
 - **API keys**: provide the API key of each LLM provider you want to use (e.g., OpenAI, Anthropic, etc.).  
 - **MODELS**: define the available models following the format described in the comments of the `.env` file.
 
-6. **Optional - Configure additional environment variables:**
+#### 6. **Optional - Configure additional environment variables:**
 
 You can also configure extra variables in the `.env` file at the backend folder. 
 - **JWT Authentication**: set secret keys for signing Access and Refresh tokens.
 - **Default Admin User**: define the credentials of the initial administrator account created in the system.
+
+## Starting the Platform
+
+### Option 1: Start with Docker
+
+From the root folder of the project, simply run:
+
+```sh
+docker-compose up
+```
+
+### Option 2: Start Locally
+
+If you want to run the platform without Docker, you need to start both backend and frontend individually.  
+To simplify the process, scripts have been added to the `package.json` in the root folder, allowing you to start the backend and frontend from the root without navigating into each folder.
+
+#### 1. Start the backend
+
+```sh
+npm run backend-start:dev
+```
+This will start the NestJS backend in development mode.
+
+#### 2. Start the frontend
+
+```sh
+npm run frontend-start:open
+```
+
+This will start the Angular frontend and automatically open it in your default browser.
+
+#### 3. Start PostgreSQL
+
+If you have PostgreSQL installed locally, it should already be running.
+If not, start your local PostgreSQL server according to your system setup.
+
+#### 4. Start the LiteLLM proxy
+
+Open a new terminal and run:
+```sh
+cd litellm
+docker-compose up
+```
+
+This will start the LiteLLM proxy service, allowing you to connect to your configured LLM providers.
+
+## Important Endpoints
+
+Here are the main endpoints you will likely use during development and testing:
+
+<div align="center">
+
+| URL | Description |
+| --- | ----------- |
+| `http://localhost:4200` | Angular frontend UI of the application. |
+| `http://localhost:3000/swagger` | Swagger documentation for the NestJS backend API. |
+| `http://localhost:4000` | Swagger documentation for the LiteLLM proxy API. |
+| `http://localhost:4000/ui` | LiteLLM proxy UI. |
+
+</div>
+
+## Future Work
+
+The following enhancements and features are planned for future versions of the platform:
+
+- **Frontend internationalization**: Implement multi-language support using tools such as Localize.  
+- **Sidebar navigation**: Add a collapsible sidebar to improve navigation as the application grows.  
+- **Administrator use cases**: Complete the implementation of administrator-specific functionalities, some of which are already partially implemented in the backend.  
+- **Admin dashboard**: Provide a dashboard to visualize metrics such as active users and most-used models.  
+- **Structured object validation**: Manage validations via schemas to cover more complex use cases in a structured manner.  
+- **Separate LLM configuration**: Move LLM configurations to a dedicated table for better management.  
+- **Multiple execution formats**: Allow experiment runs to export results not only in JSON, but also in CSV or Excel.  
+- **Parameterized prompts**: Extend prompts to accept parameters within the statements.  
+- **Improved concurrent execution**: Enhance concurrency management beyond global `Promise.all`, potentially handling it at the question level.  
+- **Stop ongoing executions**: Add the ability to stop experiments that are currently running.  
+- **Virtual keys in LiteLLM**: Enable segmentation of model usage by user or entity.  
+- **Multimodal support**: Expand the platform to handle multimodal inputs (e.g., images), overcoming current LiteLLM limitations.
