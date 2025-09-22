@@ -11,3 +11,6 @@ backend/.env
 
 # Configuration files
 proxy-llm/config.yaml
+
+# Image files
+images/
