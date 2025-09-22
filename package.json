@@ -1,0 +1,19 @@
+{
+  "name": "chatwords",
+  "private": true,
+  "scripts": {
+    "install": "cd backend && npm install && cd ../frontend && npm install",
+    "backend-install": "cd backend && npm install",
+    "frontend-install": "cd frontend && npm install",
+    "backend-start": "cd backend && nest start",
+    "backend-start:dev": "cd backend && nest start --watch",
+    "backend-start:debug": "cd backend && nest start --debug --watch",
+    "backend-start:prod": "cd backend && node dist/main",
+    "frontend-ng": "cd frontend && ng",
+    "frontend-start": "cd frontend && ng serve",
+    "frontend-start:open": "cd frontend && ng serve --open",
+    "frontend-build": "cd frontend && ng build",
+    "frontend-watch": "cd frontend && ng build --watch --configuration development",
+    "frontend-test": "cd frontend && ng test"
+  }
+}
