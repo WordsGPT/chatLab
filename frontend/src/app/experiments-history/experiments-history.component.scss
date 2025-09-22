@@ -44,9 +44,10 @@
   .filters-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 100%;
+    max-width: 900px;
     margin: 0 auto 1.5rem;
     padding: 1.25rem 1.5rem;
     background-color: var(--lightGrey-layoutBlue);
