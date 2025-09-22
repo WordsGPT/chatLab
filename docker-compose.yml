@@ -15,7 +15,7 @@ services:
     build: ./backend
     container_name: backend_chatords
     env_file:
-      - .env
+      - ./backend/.env
     ports:
       - "${BACKEND_PORT}:${BACKEND_PORT}"
     depends_on:
@@ -30,7 +30,7 @@ services:
     image: postgres:15-alpine
     container_name: postgres_db
     env_file:
-      - .env
+      - ./backend/.env
     environment:
       POSTGRES_USER: ${DATABASE_USERNAME}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
@@ -46,7 +46,7 @@ services:
     image: ghcr.io/berriai/litellm:main-latest
     container_name: litellm
     env_file:
-      - .env
+      - ./backend/.env
     ports:
       - "4000:4000"
     volumes:
