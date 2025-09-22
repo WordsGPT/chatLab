@@ -137,8 +137,9 @@ By default, it already includes the necessary variables to connect to PostgreSQL
 
 5. **Configure LLM providers**
 
-To enable the use of different LLMs, you must configure their corresponding API keys and the `MODELS` variable in the `.env` file at the root folder.  
-
+To enable the use of different LLMs, you must configure their corresponding API keys, the `MODELS` variable, and the `LITELLM_MASTER_KEY` in the `.env` file at the root folder.  
+Make sure that the value of `LITELLM_MASTER_KEY` matches the one defined in step 3.
+- **LITELLM_MASTER_KEY**: set the same value as in step 3.
 - **API keys**: provide the API key of each LLM provider you want to use (e.g., OpenAI, Anthropic, etc.).  
 - **MODELS**: define the available models following the format described in the comments of the `.env` file.
 
