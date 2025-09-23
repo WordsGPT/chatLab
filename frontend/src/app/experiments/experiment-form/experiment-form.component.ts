@@ -91,9 +91,6 @@ export class ExperimentFormComponent implements OnDestroy {
     })
   });
 
-  // Initial value for the form used for reset after submit
-  private readonly initialValue = this.experimentForm.value;
-
   // Constructor that uses effects to reset the model field if providers change
   constructor() {
     effect(() => {
@@ -160,7 +157,7 @@ export class ExperimentFormComponent implements OnDestroy {
     };
 
     await this.experimentService.createExperiment(payload);
-    this.experimentForm.reset(this.initialValue);
+    this.resetForm();
   }
 
   /**
@@ -188,6 +185,55 @@ export class ExperimentFormComponent implements OnDestroy {
   protected isFieldInvalid(controlName: string, errorName: string): boolean | undefined {
     const control = this.experimentForm.get(controlName);
     return !!(control?.hasError(errorName));
+  }
+
+  /**
+   * Resets the form to its initial state
+   */
+  private resetForm(): void {
+    this.experimentForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
+      description: [''],
+      providers: [[]],
+      models: [[], Validators.required],
+      prompts: this.fb.array([
+        this.fb.group({
+          prompt: ['', Validators.required],
+          promptOrder: [1, [Validators.required, Validators.min(1)]]
+        })
+      ]),
+      variables: this.fb.array([ 
+        this.fb.group({
+          name: ['', [Validators.required, Validators.maxLength(100)]],
+          type: ['', Validators.required],
+          validations: this.fb.group({
+            type: ['', Validators.required],
+            description: [''],
+            minLength: [''],
+            maxLength: [''],
+            format: [''],
+            pattern: [''],
+            minimum: [''],
+            maximum: [''],
+            exclusiveMinimum: [''],
+            exclusiveMaximum: [''],
+            items: [''],
+            minItems: [''],
+            maxItems: [''],
+            uniqueItems: [''],
+            properties: [''],
+            minProperties: [''],
+            maxProperties: [''],
+            required: [false]
+          })
+        })
+      ]),
+      llmConfig: this.fb.group({
+        temperature: [1, [Validators.required, Validators.min(0), Validators.max(2)]],
+        top_p: [1, [Validators.required, Validators.min(0), Validators.max(1)]],
+        max_tokens: [4096, [Validators.required, Validators.min(1)]],
+      })
+    });
   }
 
   /**
