@@ -82,8 +82,8 @@ This is the simplest way to get the platform running. Docker will handle all dep
 #### 1. **Clone the repository**:
 
 ```sh
-  git clone https://github.com/WordsGPT/chatLab.git
-  cd chatLab
+git clone https://github.com/WordsGPT/chatLab.git
+cd chatLab
 ```
 
 All services (backend, frontend, PostgreSQL, LiteLLM proxy) will be automatically started.
@@ -138,8 +138,8 @@ To simplify the installation, a `package.json` has been added in the root folder
 #### 1. **Clone the repository with submodules**:
 
 ```sh
-  git clone --recurse-submodules https://github.com/WordsGPT/chatLab.git
-  cd chatLab
+git clone --recurse-submodules https://github.com/WordsGPT/chatLab.git
+cd chatLab
 ```
 
 > If you already cloned the repository without `--recurse-submodules`, you can initialize and update the submodules with:
