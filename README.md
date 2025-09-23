@@ -151,7 +151,7 @@ cd chatLab
 #### 2. **Install dependencies**:
 
 ```sh
-  npm run install
+npm run install
 ```
 
 > If you prefer, you can also install the backend and frontend dependencies individually from the root folder with:
